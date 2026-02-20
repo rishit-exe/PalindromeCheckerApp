@@ -1,5 +1,6 @@
 import javax.xml.transform.Source;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
     static void main() {
@@ -7,20 +8,22 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String str = "madam";
+        String str = "noon";
         System.out.println("Input text: " + str);
 
-        char[] arr = str.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0, end = arr.length - 1;
+        for(char c : str.toCharArray()){
+            stack.push(c);
+        }
+
         boolean isPalindrome = true;
-        while(start < end){
-            if(arr[start] != arr[end]) {
+
+        for(char c : str.toCharArray()){
+            if(c != stack.pop()){
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         System.out.println("Is a palindrome? : " + isPalindrome);
