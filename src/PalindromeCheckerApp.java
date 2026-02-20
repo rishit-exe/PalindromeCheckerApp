@@ -10,11 +10,19 @@ public class PalindromeCheckerApp {
         String str = "madam";
         System.out.println("Input text: " + str);
 
-        String revStr = "";
-        for(int i = str.length() - 1; i >= 0; i--){
-            revStr += str.charAt(i);
+        char[] arr = str.toCharArray();
+
+        int start = 0, end = arr.length - 1;
+        boolean isPalindrome = true;
+        while(start < end){
+            if(arr[start] != arr[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        System.out.println("Is a palindrome? : " + str.equals(revStr));
+        System.out.println("Is a palindrome? : " + isPalindrome);
     }
 }
