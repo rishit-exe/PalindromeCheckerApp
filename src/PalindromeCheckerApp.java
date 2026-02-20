@@ -1,8 +1,5 @@
 import javax.xml.transform.Source;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 public class PalindromeCheckerApp {
     static void main() {
@@ -10,22 +7,19 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String str = "civic";
+        String str = "refer";
         System.out.println("Input text: " + str);
 
-        Queue<Character> queue = new LinkedList<>();
-
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
         for(char c : str.toCharArray()){
-            queue.add(c);
-            stack.push(c);
+            deque.add(c);
         }
 
         boolean isPalindrome = true;
 
-        while(!queue.isEmpty()){
-            if(queue.remove() != stack.pop()){
+        while(deque.size() > 1){
+            if(deque.removeFirst() != deque.removeLast()){
                 isPalindrome = false;
                 break;
             }
