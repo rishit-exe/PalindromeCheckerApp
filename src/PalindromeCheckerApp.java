@@ -9,16 +9,12 @@ public class PalindromeCheckerApp {
 
         String str = "madam";
         System.out.println("Input text: " + str);
-        char[] arr = str.toCharArray();
 
-        boolean isPalin = true;
-        for(int i = 0; i < str.length() / 2; i++) {
-            if (arr[i] != arr[arr.length - 1 - i]){
-                isPalin = false;
-                break;
-            }
+        String revStr = "";
+        for(int i = str.length() - 1; i >= 0; i--){
+            revStr += str.charAt(i);
         }
 
-        System.out.println("Is it a palindrome? : " + isPalin);
+        System.out.println("Is a palindrome? : " + str.equals(revStr));
     }
 }
