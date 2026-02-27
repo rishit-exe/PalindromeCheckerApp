@@ -7,26 +7,21 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String str = "level";
+        String str = "madam";
         System.out.println("Input text: " + str);
 
-        LinkedList<Character> list = new LinkedList<>();
+        boolean isPalindrome = check(str, 0, str.length() - 1);
 
-        for(char c : str.toCharArray()){
-            list.add(c);
-        }
-
-        boolean isPalindrome = true;
-
-        while(list.size() > 1) {
-            if (list.getFirst() != list.getLast()){
-                isPalindrome = false;
-                break;
-            }
-            list.removeFirst();
-            list.removeLast();
-        }
 
         System.out.println("Is a palindrome? : " + isPalindrome);
+    }
+
+    private static boolean check(String s, int start, int end){
+        if(start >= end)
+            return true;
+        if(s.charAt(start) != s.charAt(end))
+            return false;
+
+        return check(s, start + 1, end - 1);
     }
 }
