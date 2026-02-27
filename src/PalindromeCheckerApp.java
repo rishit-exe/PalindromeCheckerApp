@@ -7,28 +7,29 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String str = "A man a plan a canal Panama";
+        String str = "racecar";
         System.out.println("Input text: " + str);
 
-        String normalizedStr = "";
-        for(char c : str.toCharArray()){
-            if(c != ' ')
-                normalizedStr += c;
-        }
-
-        normalizedStr  = normalizedStr.toLowerCase();
-        boolean isPalindrome = check(normalizedStr, 0, normalizedStr.length() - 1);
-
+        PalindromeService palinService = new PalindromeService();
+        boolean isPalindrome = palinService.checkPalindrome(str);
 
         System.out.println("Is a palindrome? : " + isPalindrome);
     }
+}
 
-    private static boolean check(String s, int start, int end){
-        if(start >= end)
-            return true;
-        if(s.charAt(start) != s.charAt(end))
-            return false;
+class PalindromeService{
 
-        return check(s, start + 1, end - 1);
+    public boolean checkPalindrome(String input){
+        int start = 0;
+        int end = input.length() - 1;
+
+        while(start < end){
+            if(input.charAt(start) != input.charAt(end)){
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 }
