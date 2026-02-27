@@ -7,22 +7,24 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String str = "refer";
+        String str = "level";
         System.out.println("Input text: " + str);
 
-        Deque<Character> deque = new ArrayDeque<>();
+        LinkedList<Character> list = new LinkedList<>();
 
         for(char c : str.toCharArray()){
-            deque.add(c);
+            list.add(c);
         }
 
         boolean isPalindrome = true;
 
-        while(deque.size() > 1){
-            if(deque.removeFirst() != deque.removeLast()){
+        while(list.size() > 1) {
+            if (list.getFirst() != list.getLast()){
                 isPalindrome = false;
                 break;
             }
+            list.removeFirst();
+            list.removeLast();
         }
 
         System.out.println("Is a palindrome? : " + isPalindrome);
