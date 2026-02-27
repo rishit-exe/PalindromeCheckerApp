@@ -7,10 +7,17 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String str = "madam";
+        String str = "A man a plan a canal Panama";
         System.out.println("Input text: " + str);
 
-        boolean isPalindrome = check(str, 0, str.length() - 1);
+        String normalizedStr = "";
+        for(char c : str.toCharArray()){
+            if(c != ' ')
+                normalizedStr += c;
+        }
+
+        normalizedStr  = normalizedStr.toLowerCase();
+        boolean isPalindrome = check(normalizedStr, 0, normalizedStr.length() - 1);
 
 
         System.out.println("Is a palindrome? : " + isPalindrome);
