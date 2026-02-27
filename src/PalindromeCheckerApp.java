@@ -11,19 +11,30 @@ public class PalindromeCheckerApp {
         String str = "racecar";
         System.out.println("Input text: " + str);
 
-        PalindromeStrategy strategy;
+        PalindromeStrategy stackStrategy = new StackStrategy();
+        PalindromeStrategy dequeStrategy = new DequeStrategy();
 
-        String algorithmChoice = "STACK";
+        long startStack = System.nanoTime();
+        boolean stackResult = stackStrategy.isPalindrome(str);
+        long endStack = System.nanoTime();
 
-        if (algorithmChoice.equalsIgnoreCase("STACK")) {
-            strategy = new StackStrategy();
-        } else {
-            strategy = new DequeStrategy();
-        }
+        long startDeque = System.nanoTime();
+        boolean dequeResult = dequeStrategy.isPalindrome(str);
+        long endDeque = System.nanoTime();
 
-        boolean isPalindrome = strategy.isPalindrome(str);
+        long execTimeStack = endStack - startStack;
+        long execTimeDeque = endDeque - startDeque;
 
-        System.out.println("Is a palindrome? : " + isPalindrome);
+        System.out.println("\nIs a palindrome? (Stack): " + stackResult);
+        System.out.println("Execution time: " + execTimeStack + " ns");
+
+        System.out.println("\nIs a palindrome? (Deque): " + dequeResult);
+        System.out.println("Execution time: " + execTimeDeque + " ns");
+
+        if(execTimeStack < execTimeDeque)
+            System.out.println("\nStackStrategy is better");
+        else
+            System.out.println("\nDequeStrategy is better");
     }
 }
 
